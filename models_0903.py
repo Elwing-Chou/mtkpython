@@ -30,7 +30,7 @@ if __name__ == "__main__":
     import os
     dn = os.path.dirname(__file__)
     fn = "sqlite:///" + os.path.join(dn, "data.sqlite")
-    engine = create_engine(fn, echo=True)
+    engine = create_engine(fn, echo=False)
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
     S = sessionmaker(bind=engine)
@@ -49,5 +49,6 @@ if __name__ == "__main__":
     print("找出來的學生:", student)
     for p in student.phones:
         print("學生電話:", p)
+        print("所屬學生:", p.student)
 
 
