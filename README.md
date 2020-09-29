@@ -18,3 +18,8 @@ Repl位址: [請點我](https://repl.it/@Elwing/0827day)
 
 tensorflow 2.0
 import keras.xxxxxx -> import tensorflow.keras.xxxxx
+
+
+Python 3.8: Tensorflow 2最新
+
+Python 3.7: Tensorflow 2.0.0
