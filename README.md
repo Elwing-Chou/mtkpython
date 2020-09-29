@@ -13,3 +13,8 @@ pip3.6 install --trusted-host=pypi.org --trusted-host=files.pythonhosted.org --t
 ## 今日Demo
 
 Repl位址: [請點我](https://repl.it/@Elwing/0827day)
+
+## Tensorflow 2.0
+
+tensorflow 2.0
+import keras.xxxxxx -> import tensorflow.keras.xxxxx
