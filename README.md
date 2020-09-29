@@ -23,3 +23,7 @@ import keras.xxxxxx -> import tensorflow.keras.xxxxx
 Python 3.8: Tensorflow 2最新
 
 Python 3.7: Tensorflow 2.0.0
+
+## PyCharm
+
+2018-03
