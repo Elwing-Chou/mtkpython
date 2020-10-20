@@ -1,34 +1,31 @@
 import tkinter as tk
-import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
-nowdir = os.path.dirname(__file__)
-sqlpath = "sqlite:///" + os.path.join(nowdir, "data.sqlite")
+class MyFrame(tk.Frame):
 
-engine = create_engine(sqlpath, echo=True)
-Session = sessionmaker(bind=engine)
-sess = Session()
-
-class MyFrame(tk.LabelFrame):
-
-    def __init__(self, parent, sess):
-        tk.LabelFrame.__init__(self, parent, text="電話簿")
+    def __init__(self, parent, session):
+        tk.Frame.__init__(self, parent)
         self.pack()
         self.e1 = tk.Entry(self)
         self.e1.pack()
-        self.b1 = tk.Button(self, text="查詢", command=self.query)
+        self.b1 = tk.Button(self, text="按我查詢", command=self.query)
         self.b1.pack()
-        self.l1 = tk.Label(self, text="查詢結果")
+        self.l1 = tk.Label(self, text="點擊上方")
         self.l1.pack()
-        self.session = sess
+        self.session = session
 
     def query(self):
         number = self.e1.get()
         print(number)
+        self.l1["text"] = str(student)
 
-
-window = tk.Tk()
-window.geometry("500x500+200+200")
-MyFrame(window, sess)
-tk.mainloop()
+if __name__ == "__main__":
+    import os
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+    dir = os.path.dirname(__file__)
+    fn = "sqlite:///" + os.path.join(dir, "data.sqlite")
+    engine = create_engine(fn, echo=True)
+    session = sessionmaker(bind=engine)()
+    window = tk.Tk()
+    MyFrame(window, session)
+    window.mainloop()
