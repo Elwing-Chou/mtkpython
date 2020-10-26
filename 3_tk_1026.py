@@ -1,4 +1,6 @@
 import tkinter as tk
+import time
+import threading
 import jieba.analyse
 
 class MyFrame(tk.LabelFrame):
@@ -14,9 +16,15 @@ class MyFrame(tk.LabelFrame):
         self.l1.pack(expand=True, fill=tk.BOTH, padx=20, pady=20)
 
     def analyse(self):
-        news = self.t1.get("1.0", "end")
-        keys = jieba.analyse.extract_tags(news, 5)
-        self.l1["text"] = str(keys)
+        def work():
+            self.b1["state"] = tk.DISABLED
+            time.sleep(5)
+            news = self.t1.get("1.0", "end")
+            keys = jieba.analyse.extract_tags(news, 5)
+            self.l1["text"] = str(keys)
+            self.b1["state"] = tk.ACTIVE
+        thread = threading.Thread(target=work)
+        thread.start()
 
 window = tk.Tk()
 window.geometry("700x700+300+300")
