@@ -11,8 +11,8 @@ def analyse():
 # 變數.排版 (pack/grid/...)
 window = tk.Tk()
 window.geometry("500x500+250+250")
-f1 = tk.Frame(window, padx=20, pady=20)
-f1.pack(expand=True, fill=tk.BOTH)
+f1 = tk.Frame(window)
+f1.pack(expand=True, fill=tk.BOTH, padx=20, pady=20)
 l1 = tk.Label(f1, text="輸入文章")
 l1.pack(expand=True, fill=tk.BOTH, padx=5, pady=5)
 # single:Entry multi:Text
