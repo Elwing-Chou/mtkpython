@@ -1,5 +1,7 @@
+import time
 import tkinter as tk
 import jieba.analyse
+import threading
 
 class MyFrame(tk.LabelFrame):
     def __init__(self, parent, text):
@@ -13,9 +15,17 @@ class MyFrame(tk.LabelFrame):
         self.result.pack(expand=True, fill=tk.BOTH, padx=5, pady=5)
 
     def analyse(self):
-        t = self.t1.get("1.0", "end")
-        tags = jieba.analyse.extract_tags(t, topK=5)
-        self.result["text"] = str(tags)
+        def work():
+            self.b1["state"] = tk.DISABLED
+            self.b1["text"] = "分析中..."
+            time.sleep(5)
+            t = self.t1.get("1.0", "end")
+            tags = jieba.analyse.extract_tags(t, topK=5)
+            self.result["text"] = str(tags)
+            self.b1["state"] = tk.ACTIVE
+            self.b1["text"] = "分析"
+        thread1 = threading.Thread(target=work)
+        thread1.start()
 
 # 變數名稱 = 創造元件(父親)
 # 變數.排版 (pack/grid/...)
