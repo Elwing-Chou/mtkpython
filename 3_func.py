@@ -1,22 +1,23 @@
-# 字典: dic 操作:[欄位]
-# 函式: test 操作:(3.14)
-def test(n):
-    return round(n, 3)
-
-print(type(test))
+def test():
+    return 3
+# 型態: dic, 操作: []
+# print(3)
+# 型態: print 操作: (3)
 
 b = test
-print(b(3.14))
+print(b())
 
 def test2():
     return test
-print(test2()(3.1412342))
+print(test2()())
+
+test2.height = 175
+test2.func = test
+print(test2.func())
 
 class Person:
-    def __init__(self, h, w):
-        self.h = h
-        self.w = w
+    pass
+
 print(type(Person))
 b = Person
-p1 = b(175, 75)
-print(p1.h)
+p1 = b()
