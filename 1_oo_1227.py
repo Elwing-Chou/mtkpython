@@ -26,3 +26,16 @@ print([p1])
 p2 = Person(175, 75)
 # p1.__eq__(p2)
 print(p1 == p2)
+
+
+class SuperPerson(Person):
+    def __init__(self, h, w, c):
+        Person.__init__(self, h, w)
+        self.city = c
+
+    def __str__(self):
+        return "{}/{}".format(Person.__str__(self), self.city)
+
+p3 = SuperPerson(180, 80, "Taipei")
+print(p3.bmi(), Person.bmi(p3))
+print(p3)
