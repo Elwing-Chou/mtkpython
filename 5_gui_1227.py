@@ -1,4 +1,5 @@
 import tkinter as tk
+import model_1227 as model
 
 class MyFrame(tk.Frame):
 
@@ -17,7 +18,6 @@ class MyFrame(tk.Frame):
     def query(self):
         name = self.e1.get()
         print(name)
-
 
 import os
 from sqlalchemy import create_engine
