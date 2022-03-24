@@ -1,7 +1,13 @@
 import tkinter as tk
-
+import jieba.analyse
 # e = 元件(父元件)
 # e.排版() pack(上下左右) grid(表格) absolute(絕對)
+def analyse():
+    # global t1
+    news = t1.get("1.0", "end")
+    keywords = jieba.analyse.extract_tags(news)
+    # 第二時間設置text
+    result["text"] = str(keywords)
 
 window = tk.Tk()
 window.geometry("500x500+100+100")
@@ -13,7 +19,7 @@ l1.pack(expand=True, fill=tk.BOTH, padx=2, pady=2)
 # 多行輸入: Text 單行輸入: Entry
 t1 = tk.Text(f1)
 t1.pack(expand=True, fill=tk.BOTH, padx=2, pady=2)
-b1 = tk.Button(f1, text="分析")
+b1 = tk.Button(f1, text="分析", command=analyse)
 # tk.X/tk.Y
 b1.pack(expand=True, fill=tk.BOTH, padx=2, pady=2)
 result = tk.Label(f1, text="點按鈕分析...")
