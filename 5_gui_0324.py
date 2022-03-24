@@ -1,6 +1,7 @@
 import tkinter as tk
 import jieba.analyse
-
+import time
+import threading
 
 class MyFrame(tk.Frame):
 
@@ -21,11 +22,20 @@ class MyFrame(tk.Frame):
     # e = 元件(父元件)
     # e.排版() pack(上下左右) grid(表格) absolute(絕對)
     def analyse(self):
-        news = self.t1.get("1.0", "end")
-        keywords = jieba.analyse.extract_tags(news)
-        # 第二時間設置text
-        self.result["text"] = str(keywords)
+        def work():
+            self.b1["state"] = tk.DISABLED
+            self.result["text"] = "分析中..."
+            time.sleep(5)
+            news = self.t1.get("1.0", "end")
+            keywords = jieba.analyse.extract_tags(news)
+            # 第二時間設置text
+            self.result["text"] = str(keywords)
+            self.b1["state"] = tk.ACTIVE
+        t1 = threading.Thread(target=work)
+        t1.start()
 
+
+# main thread: UI事件
 window = tk.Tk()
 window.geometry("500x500+100+100")
 
