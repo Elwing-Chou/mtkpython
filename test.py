@@ -1,7 +1,4 @@
-b = print
-b("helo")
-
-def test():
-    return int
-
-print(test()(4.23))
+print("hello")
+a = 3 + 2
+print(a)
+print(a / 0)

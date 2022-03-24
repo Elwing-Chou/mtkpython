@@ -16,3 +16,9 @@ command = [r"/usr/local/bin/python3.9",
            "sqlalchemy==1.3.0"]
 result = subprocess.run(command)
 print(result)
+
+command = [r"/usr/local/bin/python3.9",
+            "test.py"]
+with open("out.txt", "w") as f1, open("err.txt", "w") as f2:
+    result = subprocess.run(command, stdout=f1, stderr=f2)
+    print(result)
