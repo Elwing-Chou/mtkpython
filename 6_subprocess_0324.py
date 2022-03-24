@@ -12,7 +12,9 @@ command = [r"/usr/local/bin/python3.9",
            "-m",
            "pip",
            "install",
-           "--trusted-host=pypi.org --trusted-host=files.pythonhosted.org --trusted-host=pypi.python.org",
+           "--trusted-host=pypi.org",
+           "--trusted-host=files.pythonhosted.org",
+           "--trusted-host=pypi.python.org",
            "sqlalchemy==1.3.0"]
 result = subprocess.run(command)
 print(result)
