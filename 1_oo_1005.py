@@ -27,3 +27,30 @@ p2 = Person(180, 80)
 print([p1, p2])
 # p1 == p2 -> p1.__eq__(p2)
 print(p1 == p2)
+
+class Student(Person):
+    def __init__(self, h, w, sid):
+        Person.__init__(self, h, w)
+        self.sid = sid
+
+    def __str__(self):
+        return "{}:{}".format(Person.__str__(self),
+                              self.sid)
+
+
+s1 = Student(175, 75, "00123")
+# s1.bmi()/Person.bmi(s1)
+print(s1)
+print([s1, s1])
+
+
+
+
+
+
+
+
+
+
+
+
