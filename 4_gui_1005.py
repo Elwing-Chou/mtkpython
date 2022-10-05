@@ -1,4 +1,8 @@
 import tkinter as tk
+import time
+import threading
+import jieba.analyse
+
 
 class MyFrame(tk.Frame):
     def __init__(self, root):
@@ -16,10 +20,15 @@ class MyFrame(tk.Frame):
         self.result.pack(expand=True, fill=tk.BOTH)
 
     def analyse(self):
-        text = self.t1.get("1.0", "end")
-        import jieba.analyse
-        keywords = jieba.analyse.extract_tags(text)
-        self.result["text"] = str(keywords)
+        def work():
+            self.b1["state"] = tk.DISABLED
+            # time.sleep(5)
+            text = self.t1.get("1.0", "end")
+            keywords = jieba.analyse.extract_tags(text)
+            self.result["text"] = str(keywords)
+            self.b1["state"] = tk.ACTIVE
+        thread = threading.Thread(target=work)
+        thread.start()
 
 window = tk.Tk()
 window.geometry("500x500+200+200")
